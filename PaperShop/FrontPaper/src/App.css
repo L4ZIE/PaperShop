@@ -1,0 +1,32 @@
+.papers-page {
+  padding: 20px;
+}
+
+.paper-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; 
+}
+
+.paper-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  width: 220px; 
+  text-align: center;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.paper-title {
+  font-size: 1.2em;
+  margin: 10px 0;
+}
+
+.paper-price, .paper-stock, .paper-discontinued {
+  font-size: 1em;
+}
+
+.paper-properties {
+  text-align: left;
+  margin-top: 10px;
+}
