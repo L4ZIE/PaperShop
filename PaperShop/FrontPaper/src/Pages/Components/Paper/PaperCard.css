@@ -47,7 +47,7 @@
     color: #4caf50;
     cursor: pointer;
     flex-direction: column;
-    margin-right: 10px;
+    margin-right: 30px;
 }
 
 .action-link:hover {
@@ -71,6 +71,7 @@
 .paper-price {
     flex: 1;
     text-align: center;
+    margin-right: 70px;
 }
 
 .quantity-controls {
@@ -78,6 +79,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-right: 70px;
 }
 
 .quantity-controls button {
@@ -106,7 +108,7 @@
     padding: 8px 12px;
     border-radius: 20%;
     cursor: pointer;
-    margin-right: 20px;
+    margin-right: 70px;
     margin-left: 10px;
 }
 
