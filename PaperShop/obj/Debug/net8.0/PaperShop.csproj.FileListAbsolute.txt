@@ -114,3 +114,4 @@ C:\Users\david\Desktop\PaperShop\PaperShop\obj\Debug\net8.0\refint\PaperShop.dll
 C:\Users\david\Desktop\PaperShop\PaperShop\obj\Debug\net8.0\PaperShop.pdb
 C:\Users\david\Desktop\PaperShop\PaperShop\obj\Debug\net8.0\PaperShop.genruntimeconfig.cache
 C:\Users\david\Desktop\PaperShop\PaperShop\obj\Debug\net8.0\ref\PaperShop.dll
+C:\Users\david\Desktop\PaperShop\PaperShop\obj\Debug\net8.0\PaperShop.sourcelink.json

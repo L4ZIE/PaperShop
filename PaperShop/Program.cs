@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using PaperShop.BackPaper;
 using PaperShop.BackPaper.DataAccess;
 using PaperShop.BackPaper.DataAccess.Repositories;
 using PaperShop.BackPaper.Services.Service;
@@ -21,11 +20,6 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddDbContext<PaperShopContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-/*using (var scope = app.Services.CreateScope())
-{
-    var dbContext = scope.ServiceProvider.GetRequiredService<PaperShopContext>();
-    dbContext.Database.Migrate(); 
-}*/
 
 builder.Services.AddCors(options =>
 {
@@ -52,6 +46,13 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.MapControllers();
 app.UseCors("AllowAllOrigins");
+
+using (var scope = app.Services.CreateScope())
+{
+    var context = scope.ServiceProvider.GetRequiredService<PaperShopContext>();
+    context.Database.Migrate(); 
+    PaperShopContext.Seed(context); 
+}
 
 
 app.Run();
