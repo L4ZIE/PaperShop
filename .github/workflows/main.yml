@@ -23,8 +23,7 @@ jobs:
           dotnet-version: '8.0.x'
         
       - name: Restore .NET dependencies
-        working-directory: ./Papershop
-        run: dotnet restore 
+        run: dotnet restore ./PaperShop/PaperShop.csproj
       
       - name: Run Docker Compose
         run: docker-compose up -d
