@@ -22,4 +22,8 @@
     <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.8.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Include=".github\workflows\run-paper-shop.yml" />
+  </ItemGroup>
+
 </Project>

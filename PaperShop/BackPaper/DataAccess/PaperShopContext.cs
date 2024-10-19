@@ -91,5 +91,70 @@ namespace PaperShop.BackPaper.DataAccess
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+
+        public static void Seed(PaperShopContext context)
+        {
+            if (!context.Customers.Any())
+            {
+                context.Customers.AddRange(
+                        new Customer { Name = "John Doe", Email = "john@example.com", Address = "123 Main St", Phone = "123-456-7890" },
+                        new Customer { Name = "Jane Smith", Email = "jane@example.com", Address = "456 Elm St", Phone = "098-765-4321" }
+                    );
+            }
+            
+            if (!context.Papers.Any())
+            {
+                context.Papers.AddRange(
+                    new Paper { Name = "A4 Copy Paper", Stock = 100, Price = 5.99, Discontinued = false },
+                    new Paper { Name = "A3 Art Paper", Stock = 50, Price = 10.99, Discontinued = false },
+                    new Paper { Name = "A5 Notepad", Stock = 200, Price = 2.99, Discontinued = false }
+                );
+            }
+
+            if (!context.Properties.Any())
+            {
+                context.Properties.AddRange(
+                    new Property { PropertyName = "Glossy" },
+                    new Property { PropertyName = "Matte" }
+                );
+            }
+
+            if (!context.Orders.Any())
+            {
+                var customer = context.Customers.FirstOrDefault(c => c.Email == "john@example.com");
+                if (customer != null)
+                {
+                    var order = new Order
+                    {
+                        CustomerId = customer.Id,
+                        OrderDate = DateTime.UtcNow,
+                        Status = "Pending",
+                        TotalAmount = 20.00 
+                    };
+
+                    context.Orders.Add(order);
+                    
+                    context.OrderEntries.AddRange(
+                        new OrderEntry { OrderId = order.Id, ProductId = 1, Quantity = 2 },
+                        new OrderEntry { OrderId = order.Id, ProductId = 2, Quantity = 1 }  
+                    );
+                }
+            }
+
+            
+            if (!context.PaperProperties.Any())
+            {
+                var paper = context.Papers.FirstOrDefault(p => p.Name == "A4 Copy Paper");
+                var property = context.Properties.FirstOrDefault(p => p.PropertyName == "Glossy");
+                
+                if (paper != null && property != null)
+                {
+                    context.PaperProperties.Add(new PaperProperty { PaperId = paper.Id, PropertyId = property.Id });
+                }
+            }
+
+            
+            context.SaveChanges();
+        }
     }
 }
