@@ -24,6 +24,14 @@ jobs:
         
       - name: Restore .NET dependencies
         run: dotnet restore ./PaperShop/PaperShop.csproj
+
+      - name: Install Docker
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y docker.io
+          sudo systemctl start docker
+          sudo systemctl enable docker
+          sudo apt-get install -y docker-compose
       
       - name: Run Docker Compose
         run: docker-compose up -d
