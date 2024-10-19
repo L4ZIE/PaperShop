@@ -4,7 +4,7 @@
     price: number;
     discontinued: boolean;
     stock: number;
-    properties: Property[];
+    properties?: Property[];
 }
 
 export interface Property {
