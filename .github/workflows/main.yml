@@ -36,7 +36,8 @@ jobs:
           sudo apt-get install -y docker-compose
 
       - name: Run Docker Compose
-        run: docker-compose up -d ./PaperShop/docker-compose.yml
+        working-directory: ./PaperShop
+        run: docker-compose up -d
         
       - name: Wait for Database
         run: |
