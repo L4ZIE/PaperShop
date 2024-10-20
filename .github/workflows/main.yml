@@ -23,7 +23,7 @@ jobs:
           dotnet-version: '8.0.x'
         
       - name: Restore .NET dependencies
-        run: dotnet restore
+        run: dotnet restore ./PaperShop/PaperShop.csproj
       
       - name: Run tests
         run: dotnet test
