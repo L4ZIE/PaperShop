@@ -9,6 +9,7 @@
 
 .search-bar {
     padding: 8px;
+    background-color:#f1f1f1 ;
     border: 1px solid #ccc;
     border-radius: 4px;
     width: 300px;
@@ -18,6 +19,8 @@
 
 .filter-dropdown {
     padding: 8px;
+    background-color: #f1f1f1;
+    color: #1a1a1a;
     border: 1px solid #ccc;
     border-radius: 4px;
     margin-right: 270px;

@@ -15,41 +15,16 @@ jobs:
     
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
         
       - name : Setup .NET
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v1
         with:
           dotnet-version: '8.0.x'
         
       - name: Restore .NET dependencies
         run: dotnet restore
       
-      - name: Run Docker Compose
-        run: docker-compose up -d
-        
-      - name: Wait for Database
-        run: |
-          for i in {1..30}; do
-            if docker exec paper_shop_db pg_isready -U postgres; then
-              break
-            fi
-            echo "Waiting for database..."
-            sleep 5
-          done
-          
-          
-      - name: Run Migrations
-        run: dotnet ef database update
-          
-      - name: Run .NET application
-        run: dotnet run
-      
-      - name: Install frontend dependencies
-        working-directory: ./FrontPaper
-        run: npm install
-          
-      - name: Run frontend app
-        working-directory: ./FrontPaper
-        run: npm run dev
+      - name: Run tests
+        run: dotnet test
           

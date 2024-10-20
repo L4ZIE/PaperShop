@@ -1,4 +1,5 @@
-﻿using PaperShop.BackPaper.DataAccess.Repositories;
+﻿using PaperShop.BackPaper.DataAccess.RepoInterfaces;
+using PaperShop.BackPaper.DataAccess.Repositories;
 using PaperShop.BackPaper.Services.DTO.Requests;
 using PaperShop.BackPaper.Services.DTO.Responses;
 
@@ -6,9 +7,9 @@ namespace PaperShop.BackPaper.Services.Service;
 
 public class PaperService
 {
-    private readonly PaperRepository _paperRepository;
+    private readonly IPaperRepository _paperRepository;
 
-    public PaperService(PaperRepository paperRepository)
+    public PaperService(IPaperRepository paperRepository)
     {
         _paperRepository = paperRepository;
     }

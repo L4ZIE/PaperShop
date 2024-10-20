@@ -34,6 +34,7 @@
 
 .paper-header {
     flex: 2;
+    color: #1a1a1a;
     font-size: 18px;
     font-weight: 500;
     margin-right: 10px;
@@ -70,12 +71,14 @@
 
 .paper-price {
     flex: 1;
+    color: #1a1a1a;
     text-align: center;
     margin-right: 70px;
 }
 
 .quantity-controls {
     flex: 1;
+    color: #1a1a1a;''
     display: flex;
     justify-content: center;
     align-items: center;
@@ -85,6 +88,7 @@
 .quantity-controls button {
     background-color: #f1f1f1;
     border: none;
+    color: #1a1a1a;
     padding: 5px 10px;
     cursor: pointer;
     border-radius: 4px;

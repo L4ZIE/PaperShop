@@ -1,9 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PaperShop.BackPaper.DataAccess.Models;
+using PaperShop.BackPaper.DataAccess.RepoInterfaces;
 
 namespace PaperShop.BackPaper.DataAccess.Repositories;
 
-public class PaperRepository
+public class PaperRepository : IPaperRepository
 {
     private readonly PaperShopContext _context;
 
@@ -12,9 +13,13 @@ public class PaperRepository
         _context = context;
     }
 
-    public List<Paper> GetAllPapers()
+    public virtual List<Paper> GetAllPapers()
     {
-        return _context.Papers.Include(p => p.PaperProperties).ToList();
+       //return _context.Papers.Include(p => p.PaperProperties).ToList();
+       return _context.Papers
+           .Include(p => p.PaperProperties) 
+           .ThenInclude(pp => pp.Property) 
+           .ToList();
     }
     
     public Paper? GetById(int id)
