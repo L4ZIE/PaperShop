@@ -29,3 +29,8 @@ export interface Order {
     orderDate: string;
     orderEntries: OrderEntry[];
 }
+
+export interface Customer {
+    id: number;
+    name: string;
+}

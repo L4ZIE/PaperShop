@@ -15,8 +15,7 @@ public class CustomerController : ControllerBase
     {
         _context = context;
     }
-
-    // GET: api/Customer
+    
     [HttpGet]
     public async Task<IActionResult> GetCustomers()
     {

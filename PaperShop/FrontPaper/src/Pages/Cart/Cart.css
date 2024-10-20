@@ -79,20 +79,3 @@
     border-radius: 4px;
     margin-right: 270px;
 }
-
-/* Media queries for responsiveness */
-@media (max-width: 768px) {
-    .cart-container {
-        width: 200%;
-    }
-
-    .cart-header, .cart-item {
-        flex-direction: column;
-        text-align: left;
-    }
-
-    .header-product, .header-price, .header-quantity, .header-total,
-    .cart-item__product, .cart-item__price, .cart-item__quantity, .cart-item__total {
-        text-align: left;
-    }
-}

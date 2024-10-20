@@ -20,7 +20,6 @@ namespace PaperShop.BackPaper.Api.Controllers
             _context = context;
         }
         
-        // GET: api/OrderEntry
         [HttpGet]
         public ActionResult<IEnumerable<OrderEntry>> GetOrderEntries()
         {
@@ -44,9 +43,7 @@ namespace PaperShop.BackPaper.Api.Controllers
 
             return Ok(orderEntries);
         }
-
-
-        // POST: api/OrderEntry
+        
         [HttpPost]
         public ActionResult AddOrderEntry(UpdateOrderEntryDto request)
         {
@@ -79,8 +76,7 @@ namespace PaperShop.BackPaper.Api.Controllers
             _context.SaveChanges();
             return Ok(new { Message = "Order entry added or updated successfully" });
         }
-
-        // PUT: api/OrderEntry/{id}
+        
         [HttpPut("{id}")]
         public ActionResult UpdateOrderEntry(int id, UpdateOrderEntryDto request)
         {
@@ -97,8 +93,7 @@ namespace PaperShop.BackPaper.Api.Controllers
 
             return NoContent();
         }
-
-        // DELETE: api/OrderEntry/{id}
+        
         [HttpDelete("{id}")]
         public ActionResult DeleteOrderEntry(int id)
         {

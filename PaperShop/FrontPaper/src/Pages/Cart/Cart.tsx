@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import CartItem from './CartItem';
 import './Cart.css';
 import { OrderEntry } from '../../Types';
@@ -9,9 +10,10 @@ const Cart: React.FC = () => {
     const [cartItems, setCartItems] = useState<OrderEntry[]>([]);
     const [selectedCustomer, setSelectedCustomer] = useState<number | null>(null);
     const [customers, setCustomers] = useState<{ id: number, name: string }[]>([]);
-
+    const [checkoutStatus, setCheckoutStatus] = useState<string | null>(null);
+    const navigate = useNavigate();
+    
     useEffect(() => {
-        // Load cart items from the backend
         axios.get('http://localhost:5201/api/OrderEntry')
             .then(response => {
                 if (Array.isArray(response.data)) {
@@ -26,7 +28,6 @@ const Cart: React.FC = () => {
                 setCartItems([]);
             });
         
-        // Load customers 
         axios.get('http://localhost:5201/api/Customer')
             .then(response => {
                 if (Array.isArray(response.data)) {
@@ -41,6 +42,22 @@ const Cart: React.FC = () => {
                 setCustomers([]);
             });
     }, []);
+
+    const formatDate = (date: Date): string => {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        const hours = String(date.getHours()).padStart(2, '0');
+        const minutes = String(date.getMinutes()).padStart(2, '0');
+        const seconds = String(date.getSeconds()).padStart(2, '0');
+        return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+    };
+
+    const getDeliveryDate = (): string => {
+        const deliveryDate = new Date();
+        deliveryDate.setDate(deliveryDate.getDate() + 2);
+        return deliveryDate.toISOString().split('T')[0];
+    };
 
     const updateCartItemQuantity = async (id: number, quantity: number) => {
         try {
@@ -90,6 +107,34 @@ const Cart: React.FC = () => {
 
     const totalPrice = cartItems.reduce((total, item) => total + (item.product?.price ?? 0) * item.quantity, 0);
 
+    const handleCheckout = async () => {
+        if (!selectedCustomer) {
+            setCheckoutStatus('Please select a customer before checking out.');
+            return;
+        }
+
+        const orderData = {
+            customerId: selectedCustomer,
+            orderDate: formatDate(new Date()),
+            deliveryDate: getDeliveryDate(),
+            totalAmount: totalPrice,
+            orderEntries: cartItems.map(item => ({
+                productId: item.product?.id,
+                quantity: item.quantity
+            }))
+        };
+
+        try {
+            await axios.post('http://localhost:5201/api/Order', orderData);
+            setCheckoutStatus('Order successfully placed!');
+            setCartItems([]); 
+            navigate('/'); 
+        } catch (error) {
+            setCheckoutStatus('Failed to place order.');
+            console.error('Checkout failed:', error);
+        }
+    };
+    
     return (
         <div className="cart-container">
             <NavBar/>
@@ -121,7 +166,14 @@ const Cart: React.FC = () => {
 
             <div className="cart-footer">
                 <h3>Total price: {totalPrice} kr</h3>
-                <button className="checkout-button" disabled={!selectedCustomer}>Check-out</button>
+                <button 
+                    className="checkout-button" 
+                    disabled={!selectedCustomer}
+                    onClick={handleCheckout}
+                >
+                    Check-out
+                </button>
+                {checkoutStatus && <p className="checkout-status">{checkoutStatus}</p>}
             </div>
         </div>
     );

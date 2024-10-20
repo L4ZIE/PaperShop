@@ -12,8 +12,7 @@ interface PaperCardProps {
 const PaperCard: React.FC<PaperCardProps> = ({ paper }) => {
     const [quantity, setQuantity] = useState<number>(1);
     const navigate = useNavigate();
-
-    // Handle quantity update
+    
     const updateQuantity = (increment: boolean) => {
         setQuantity((prevQuantity) => {
             const newQuantity = increment ? prevQuantity + 1 : prevQuantity - 1;
