@@ -189,7 +189,7 @@ namespace PaperShop.Migrations
 
                     b.HasIndex("PropertyId");
 
-                    b.ToTable("PaperProperties");
+                    b.ToTable("paper_properties", (string)null);
                 });
 
             modelBuilder.Entity("PaperShop.BackPaper.DataAccess.Models.Property", b =>

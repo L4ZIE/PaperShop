@@ -1,0 +1,64 @@
+﻿.new-property {
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+}
+
+.title, .table-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.input-field {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #000;
+}
+
+.submit-button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    background-color: #0056b3;
+}
+
+p {
+    color: red;
+}
+
+.property-table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    background-color: #f9f9f9;
+}
+
+.property-table th, .property-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    color: #000;
+}
+
+.property-table th {
+    background-color: #f2f2f2;
+}
+
+.property-table tr:hover {
+    background-color: #f1f1f1;
+}

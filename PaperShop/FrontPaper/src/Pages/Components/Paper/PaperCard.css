@@ -1,0 +1,124 @@
+.paper-card {
+    width: 900px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 40px;
+    padding-right: 20px;
+    border-bottom: 1px solid #ddd;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.paper-properties {
+    flex: 2;
+    min-height: 40px; 
+    margin-right: 10px;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.paper-properties ul {
+    padding-left: 15px;
+    margin: 0;
+}
+
+.paper-properties.empty {
+    opacity: 0; /* Hides content */
+    visibility: hidden; 
+}
+
+.paper-header {
+    flex: 2;
+    color: #1a1a1a;
+    font-size: 18px;
+    font-weight: 500;
+    margin-right: 10px;
+}
+
+.action-button {
+    flex-direction: column;
+}
+
+.action-link {
+    color: #4caf50;
+    cursor: pointer;
+    flex-direction: column;
+    margin-right: 30px;
+}
+
+.action-link:hover {
+    text-decoration: underline;
+}
+
+.paper-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.paper-actions a {
+    color: #4caf50;
+    cursor: pointer;
+}
+.paper-actions a:hover {
+    text-decoration: underline;
+}
+
+.paper-price {
+    flex: 1;
+    color: #1a1a1a;
+    text-align: center;
+    margin-right: 70px;
+}
+
+.quantity-controls {
+    flex: 1;
+    color: #1a1a1a;''
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 70px;
+}
+
+.quantity-controls button {
+    background-color: #f1f1f1;
+    border: none;
+    color: #1a1a1a;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin: 0 5px;
+}
+
+.quantity-controls button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.quantity-controls span {
+    min-width: 20px;
+    text-align: center;
+}
+
+.add-to-cart .cart-button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 20%;
+    cursor: pointer;
+    margin-right: 70px;
+    margin-left: 10px;
+}
+
+.add-to-cart .cart-button:hover {
+    background-color: #45a049;
+}
+
+
+

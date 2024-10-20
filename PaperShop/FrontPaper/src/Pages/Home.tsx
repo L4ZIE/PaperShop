@@ -1,11 +1,11 @@
 ﻿import React from 'react';
 import PaperList from './Components/Paper/PaperList';
+import NavBar from "./Components/NavBar/NavBar.tsx";
 
 const Home: React.FC = () => {
     return (
-        <div className="home-container">
-            <h1 className="title">Welcome to Dunder Mifflin Infinity!</h1>
-            <h2 className="subtitle">Available Papers</h2>
+        <div>
+            <NavBar />
             <PaperList /> 
         </div>
     );

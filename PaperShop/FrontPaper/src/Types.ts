@@ -4,7 +4,7 @@
     price: number;
     discontinued: boolean;
     stock: number;
-    properties: Property[];
+    properties?: Property[];
 }
 
 export interface Property {
@@ -28,4 +28,9 @@ export interface Order {
     status: string;
     orderDate: string;
     orderEntries: OrderEntry[];
+}
+
+export interface Customer {
+    id: number;
+    name: string;
 }
