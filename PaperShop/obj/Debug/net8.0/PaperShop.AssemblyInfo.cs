@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PaperShop")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e0a4701b8bc32c125eaf3b46395fa0cd8ed6ec29")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+95fb4b2df1090f101befa636af43c25f847c6345")]
 [assembly: System.Reflection.AssemblyProductAttribute("PaperShop")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PaperShop")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
