@@ -5,6 +5,7 @@ import PaperList from './Pages/Components/Paper/PaperList';
 import './App.css'
 import NewProduct from "./Pages/Components/NewProduct/NewProduct.tsx";
 import UpdateProduct from "./Pages/Components/UpdateProduct/UpdateProduct.tsx";
+import Cart from "./Pages/Cart/Cart.tsx";
 
 const App: React.FC = () => {
     return (
@@ -14,6 +15,7 @@ const App: React.FC = () => {
                 <Route path="/papers" element={<PaperList />} />
                 <Route path="/new-product" element={<NewProduct />} />
                 <Route path="/update-product/:id" element={<UpdateProduct />} />
+                <Route path="/cart" element={<Cart />} />
             </Routes>
         </Router>
     );
