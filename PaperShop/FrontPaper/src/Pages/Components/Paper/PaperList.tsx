@@ -68,8 +68,11 @@ const PaperList: React.FC = () => {
                 <option value="priceLowHigh">Price: Low to High</option>
                 <option value="priceHighLow">Price: High to Low</option>
             </select>
+            <button onClick={() => navigate('/new-property')} className="add-property-button">
+                Add Property
+            </button>
             <button onClick={() => navigate('/new-product')} className="add-product-button">
-                Add product
+                Add Product
             </button>
             <div className="paper-table">
                 {filteredPapers.map((paper) => (

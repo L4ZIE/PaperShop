@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import './NewProduct.css';
 
 import { useNavigate } from 'react-router-dom';
@@ -9,11 +9,31 @@ const NewProduct: React.FC = () => {
     const [price, setPrice] = useState<number | string>('');
     const [discontinued, setDiscontinued] = useState<string>('');
     const [stock, setStock] = useState<number | string>('');
-    const [customProperties, setCustomProperties] = useState<string>('');
+    //const [customProperties, setCustomProperties] = useState<string>('');
+    const [selectedProperty, setSelectedProperty] = useState<string>(''); // New state for selected property
+    const [properties, setProperties] = useState<{ id: number, propertyName: string }[]>([]); // New state for properties
     const [message, setMessage] = useState<string>('');
 
     const navigate = useNavigate();
 
+    useEffect(() => {
+        const fetchProperties = async () => {
+            try {
+                const response = await fetch('http://localhost:5201/api/Property'); // Adjust this endpoint based on your API
+                if (!response.ok) {
+                    throw new Error('Failed to fetch properties');
+                }
+                const data = await response.json();
+                setProperties(data); // Assuming data is an array of properties
+            } catch (error) {
+                console.error("Error fetching properties: ", error);
+                setMessage('Error fetching properties');
+            }
+        };
+
+        fetchProperties();
+    }, []);
+    
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
@@ -22,7 +42,7 @@ const NewProduct: React.FC = () => {
             price: parseFloat(price as string),
             discontinued: discontinued === 'yes', // Convert string to boolean
             stock: parseInt(stock as string),
-            properties: customProperties.split(',').map((prop) => ({ propertyName: prop.trim() })),
+            properties: selectedProperty ? [{ propertyName: selectedProperty }] : [],
         };
 
         console.log("New product data: ", newProduct);
@@ -46,7 +66,7 @@ const NewProduct: React.FC = () => {
                 setPrice('');
                 setDiscontinued('no');
                 setStock('');
-                setCustomProperties('');
+                setSelectedProperty('');
 
                 // Redirect to main page with success message
                 navigate('/', { state: { successMessage: 'Product successfully created!' } });
@@ -136,13 +156,18 @@ const NewProduct: React.FC = () => {
                     <label>
                         Custom properties <span className="optional-label">*Optional</span>
                     </label>
-                    <input
-                        type="text"
-                        value={customProperties}
-                        onChange={(e) => setCustomProperties(e.target.value)}
+                    <select
+                        value={selectedProperty}
+                        onChange={(e) => setSelectedProperty(e.target.value)}
                         className="input-field"
-                        placeholder="Enter custom properties"
-                    />
+                    >
+                        <option value="">Select a property</option>
+                        {properties.map((property) => (
+                            <option key={property.id} value={property.propertyName}>
+                                {property.propertyName}
+                            </option>
+                        ))}
+                    </select>
                 </div>
 
                 {/* Submit Button */}

@@ -15,7 +15,11 @@ public class PaperRepository : IPaperRepository
 
     public virtual List<Paper> GetAllPapers()
     {
-        return _context.Papers.Include(p => p.PaperProperties).ToList();
+       //return _context.Papers.Include(p => p.PaperProperties).ToList();
+       return _context.Papers
+           .Include(p => p.PaperProperties) 
+           .ThenInclude(pp => pp.Property) 
+           .ToList();
     }
     
     public Paper? GetById(int id)

@@ -86,6 +86,8 @@ namespace PaperShop.BackPaper.DataAccess
 
             modelBuilder.Entity<PaperProperty>()
                 .HasKey(pp => new { pp.PaperId, pp.PropertyId });
+            
+            modelBuilder.Entity<PaperProperty>().ToTable("paper_properties");
 
             OnModelCreatingPartial(modelBuilder);
         }

@@ -11,6 +11,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddScoped<OrderService>();
 builder.Services.AddScoped<PaperService>();
+builder.Services.AddScoped<PropertyService>();
+builder.Services.AddScoped<IPropertyRepository, PropertyRepository>();
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<IPaperRepository, PaperRepository>();
 builder.Services.AddEndpointsApiExplorer();
