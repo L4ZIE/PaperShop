@@ -41,10 +41,10 @@ body {
 
 .add-property-button {
   padding: 10px 15px;
-  background-color: #4caf50;
-  color: white;
-  border: none;
+  color: #45a049;
+  border: 1px solid #45a049;
   border-radius: 4px;
+  margin-right: 15px;
   cursor: pointer;
 }
 
