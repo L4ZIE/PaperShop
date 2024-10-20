@@ -1,4 +1,5 @@
-﻿using PaperShop.BackPaper.DataAccess.Repositories;
+﻿using PaperShop.BackPaper.DataAccess.RepoInterfaces;
+using PaperShop.BackPaper.DataAccess.Repositories;
 using PaperShop.BackPaper.Services.DTO.Requests;
 using PaperShop.BackPaper.Services.DTO.Responses;
 
@@ -6,9 +7,9 @@ namespace PaperShop.BackPaper.Services.Service;
 
 public class OrderService
 {
-    private readonly OrderRepository _orderRepository;
+    private readonly IOrderRepository _orderRepository;
 
-    public OrderService(OrderRepository orderRepository)
+    public OrderService(IOrderRepository orderRepository)
     {
         _orderRepository= orderRepository;
     }

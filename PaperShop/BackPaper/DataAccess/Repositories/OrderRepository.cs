@@ -1,10 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PaperShop.BackPaper.DataAccess.Models;
+using PaperShop.BackPaper.DataAccess.RepoInterfaces;
 
 
 namespace PaperShop.BackPaper.DataAccess.Repositories;
 
-public class OrderRepository
+public class OrderRepository : IOrderRepository
 {
     private readonly PaperShopContext _context;
 
