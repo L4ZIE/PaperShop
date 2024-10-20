@@ -18,13 +18,11 @@ const UpdateProduct: React.FC = () => {
     const location = useLocation();
 
     useEffect(() => {
-        // Check if product data is passed via state
         const state = location.state as any;
         if (state && state.product) {
             const { id, name, price, discontinued, stock, properties } = state.product;
             setFormData(id, name, price, discontinued, stock, properties);
         } else if (id) {
-            // If no product data in state, fetch it from the API
             fetchProductData(id);
         }
     }, [location.state, id]);
@@ -94,7 +92,7 @@ const UpdateProduct: React.FC = () => {
     };
 
     if (loading) {
-        return <div>Loading...</div>; // Display loading state while fetching data
+        return <div>Loading...</div>;
     }
 
     return (

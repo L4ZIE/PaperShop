@@ -40,7 +40,7 @@ const NewProduct: React.FC = () => {
         const newProduct = {
             name: productName,
             price: parseFloat(price as string),
-            discontinued: discontinued === 'yes', // Convert string to boolean
+            discontinued: discontinued === 'yes',
             stock: parseInt(stock as string),
             properties: selectedProperty ? [{ propertyName: selectedProperty }] : [],
         };

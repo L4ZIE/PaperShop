@@ -12,8 +12,7 @@ interface PaperCardProps {
 const PaperCard: React.FC<PaperCardProps> = ({ paper }) => {
     const [quantity, setQuantity] = useState<number>(1);
     const navigate = useNavigate();
-
-    // Handle quantity update
+    
     const updateQuantity = (increment: boolean) => {
         setQuantity((prevQuantity) => {
             const newQuantity = increment ? prevQuantity + 1 : prevQuantity - 1;
@@ -23,6 +22,30 @@ const PaperCard: React.FC<PaperCardProps> = ({ paper }) => {
 
     const handleUpdate = () => {
         navigate(`/update-product/${id}`, { state: { paper, isEdit: true } });
+    };
+
+    const handleAddToCart = async () => {
+        try {
+            const response = await fetch('http://localhost:5201/api/OrderEntry', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    productId: paper.id,
+                    quantity
+                }),
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            alert('Item added to cart');
+        } catch (error) {
+            console.error('Failed to add to cart:', error);
+            alert('Failed to add item to cart');
+        }
     };
 
     const { name, price, properties = [], id } = paper;
@@ -65,7 +88,7 @@ const PaperCard: React.FC<PaperCardProps> = ({ paper }) => {
 
             {/* Add to cart button */}
             <div className="add-to-cart">
-                <button className="cart-button">
+                <button className="cart-button" onClick={handleAddToCart}>
                     <FaShoppingCart/> 
                 </button>
             </div>
